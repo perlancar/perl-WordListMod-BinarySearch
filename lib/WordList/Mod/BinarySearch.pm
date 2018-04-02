@@ -13,6 +13,10 @@ our @patches = (
          my ($self, $word) = @_;
 
          my $pkg = ref($self);
+
+         my $dyn = ${"$pkg\::DYNAMIC"};
+         die "Can't binary search on a dynamic wordlist" if $dyn;
+
          my $fh = \*{"$pkg\::DATA"};
          my $sort = ${"$pkg\::SORT"} || "";
 
@@ -22,7 +26,7 @@ our @patches = (
          } elsif (!$sort) {
              $tell = File::SortedSeek::alphabetic($fh, $word);
          } else {
-             die "Wordlist is not ascibetically/numerically sort (sort=$SORT)";
+             die "Wordlist is not ascibetically/numerically sort (sort=$sort)";
          }
 
          chomp(my $line = <$fh>);
