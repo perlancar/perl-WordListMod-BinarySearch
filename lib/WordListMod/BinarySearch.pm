@@ -1,6 +1,8 @@
-package WordList::Mod::BinarySearch;
+package WordListMod::BinarySearch;
 
+# AUTHORITY
 # DATE
+# DIST
 # VERSION
 
 use strict 'subs', 'vars';
@@ -39,7 +41,7 @@ our @patches = (
 
 =head1 SYNOPSIS
 
- use WordList::Mod qw(get_mod_wordlist);
+ use WordListMod qw(get_mod_wordlist);
  my $wl = get_mod_wordlist("EN::Foo", "BinarySearch");
  say $wl->word_exists("foo"); # uses binary searching
 
